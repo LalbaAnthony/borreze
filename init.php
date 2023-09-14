@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @author Anthony
+ */
+
+/**
+ * Paramétrage pour certains serveurs qui n'affichent pas les erreurs PHP par défaut
+ */
+ini_set('display_errors', '1');
+ini_set('html_errors', '1');
+
+/**
+ * Autoload
+ * @param string $classe
+ */
+function my_autoloader($classe)
+{
+  include 'classes/' . $classe . '.php';
+}
+
+/**
+ * Functions
+ */
+include('functions/logs_functions.php');
+include('functions/randoms_functions.php');
+
+spl_autoload_register('my_autoloader');
+
+/**
+ * Vide le cache du navigateur
+ */
+header("Cache-Control: no-cache, must-revalidate");
+header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+
+/**
+ * Paramètre de la base de données
+ */
+define('DB_USER', 'borrezeuser');
+define('DB_PASSWORD', 'wDGgwaN1QC3VHur');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'borreze');
